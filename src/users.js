@@ -6,10 +6,10 @@ export const users = [
   	created: '20/01/2000'
   },
   {
-  	id: 2,
-  	jobtitle: 'Software Engineer',
-  	description: 'LA',
-  	created: '20/01/2000'
+    id: 2,
+    jobtitle: 'CEO',
+    description: 'Tokyo',
+    created: '20/01/2000'
   },
   {
   	id: 3,
@@ -60,10 +60,10 @@ export const users = [
   	created: '20/01/2000'
   },
   {
-  	id: 11,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
-  	created: '20/01/2000'
+    id: 11,
+    jobtitle: 'CFO',
+    description: 'London',
+    created: '20/01/2000'
   },
   {
   	id: 12,
@@ -73,50 +73,50 @@ export const users = [
   },
   {
   	id: 13,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
+  	jobtitle: 'CEO',
+  	description: 'Yemen',
   	created: '20/01/2000'
   },
   {
   	id: 14,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
+  	jobtitle: 'Software Engineer',
+  	description: 'Venice',
   	created: '20/01/2000'
   },
   {
   	id: 15,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
+  	jobtitle: 'PM',
+  	description: 'San Francisco',
   	created: '20/01/2000'
   },
   {
   	id: 16,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
+  	jobtitle: 'Legal',
+  	description: 'London',
   	created: '20/01/2000'
   },
   {
   	id: 17,
   	jobtitle: 'GM',
-  	description: 'Madrid',
+  	description: 'Ithaca',
   	created: '20/01/2000'
   },
   {
-  	id: 18,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
-  	created: '20/01/2000'
+    id: 18,
+    jobtitle: 'Front End',
+    description: 'New York',
+    created: '20/01/2000'
   },
   {
   	id: 19,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
+  	jobtitle: 'Marketing',
+  	description: 'Zagreb',
   	created: '20/01/2000'
   },
   {
   	id: 20,
-  	jobtitle: 'GM',
-  	description: 'Madrid',
+  	jobtitle: 'Finance',
+  	description: 'Vancouver',
   	created: '20/01/2000'
   }
 ];
