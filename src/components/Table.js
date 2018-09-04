@@ -1,4 +1,5 @@
 import React from 'react';
+import UserRow from './UserRow';
 import { users } from '../users';
 
 const Table = (props) => {
@@ -16,16 +17,18 @@ const Table = (props) => {
         <tbody>
           {
             users.map(row => (
-              <tr>
-                <td>{row.id}</td>
-                <td>{row.jobtitle}</td>
-                <td>{row.description}</td>
-                <td>{row.created}</td>
-              </tr>
+             <UserRow user={row} />
             ))
           }
         </tbody>
      </table>
+    <div className="row">
+     <div className="fl w-25">
+        <button className="btn btn-primary ma2">Add</button>
+        <button className="btn btn-primary ma2">Edit</button>
+        <button className="btn btn-primary ma2">Delete</button>
+     </div>
+     </div>
     </div>
   );
 }
