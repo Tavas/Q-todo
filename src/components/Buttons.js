@@ -3,6 +3,9 @@ import ReactModal from 'react-modal';
 import Input from './Input';
 import './modals/Modal.css';
 
+const $ = require('jquery');
+$.DataTable = require('datatables.net');
+
 ReactModal.setAppElement('#root')
 
 class ButtonsModal extends React.Component {
@@ -19,6 +22,10 @@ class ButtonsModal extends React.Component {
   handleOpenModal () {
     this.setState({ showModal: true });
   }
+
+  deleteOnClick () {
+   $('#main').DataTable().row('.selected').remove().draw();
+}
   
   handleCloseModal () {
     this.setState({ showModal: false });
@@ -43,8 +50,8 @@ class ButtonsModal extends React.Component {
             <Input onAddClick={(id, jobtitle, description, created) => {
             this.onAddClick(id, jobtitle, description, created);}} />
         </ReactModal>
-        <button className="btn btn-primary ma1">Edit</button>
-        <button className="btn btn-primary ma1">Delete</button>
+        <button className="btn btn-info ma1">Edit</button>
+        <button onClick={this.deleteOnClick} className="btn btn-danger ma1">Delete</button>
      </div>
     );
   }

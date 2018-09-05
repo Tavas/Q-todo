@@ -26,7 +26,7 @@ class App extends Component {
         this.setState({
             users: result
         })
-    }
+  }
     
   render() {
     return (

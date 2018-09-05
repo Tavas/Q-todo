@@ -20,4 +20,4 @@ $(document).ready(function() {
        $('#main tbody').on( 'dblclick', 'tr', function () {
           $(this).toggleClass('selected');
       });
-});
+    });
