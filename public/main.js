@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    $('#main').DataTable({
-        "info": false,
+    const table = $('#main').DataTable({
+         select: true,
         "pagingType": "simple",
          scrollY: 500,
         "fnDrawCallback": function(oSettings) {
@@ -11,4 +11,13 @@ $(document).ready(function() {
           }
         }
     });
+      $('#main tbody').on( 'click', 'tr', function () {
+          $(this).toggleClass('selected');
+      });
+      $('#button').click( function () {
+          alert( table.rows('.selected').data().length +' row(s) selected' );
+      });
+       $('#main tbody').on( 'dblclick', 'tr', function () {
+          $(this).toggleClass('selected');
+      });
 });
