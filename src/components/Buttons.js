@@ -3,6 +3,9 @@ import ReactModal from 'react-modal';
 import Input from './Input';
 import './modals/Modal.css';
 
+const firebase = require("firebase");
+require("firebase/firestore");
+
 const $ = require('jquery');
 $.DataTable = require('datatables.net');
 
@@ -30,6 +33,29 @@ class ButtonsModal extends React.Component {
   handleCloseModal () {
     this.setState({ showModal: false });
   }
+
+  addUser(user) {
+      firebase.firestore().collection("tasks").doc(user.id).set({
+          jobtitle: user.jobtitle,
+          description: user.description,
+          created: new Date() * 1000
+      })
+      .then(function() {
+          console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      }); 
+  }
+
+  onAddClick(id, jobtitle, description, created) {
+      this.addUser({
+       id : id, 
+       jobtitle : jobtitle,
+       description : description, 
+       created : created
+     })
+  }
  
   render() {
     return (
@@ -48,7 +74,7 @@ class ButtonsModal extends React.Component {
             className="btn btn-secondary f2m ma2 fr tc">
             Close</button>
             <Input onAddClick={(id, jobtitle, description, created) => {
-            this.onAddClick(id, jobtitle, description, created);}} />
+             this.onAddClick(id, jobtitle, description, created);}} />
         </ReactModal>
         <button className="btn btn-info ma1">Edit</button>
         <button onClick={this.deleteOnClick} className="btn btn-danger ma1">Delete</button>

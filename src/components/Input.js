@@ -9,8 +9,7 @@ class Input extends Component {
         this.state = {
             id: '',
             jobtitle: '',
-            description: '',
-            created: ''
+            description: ''
         }
     }
 
@@ -43,12 +42,6 @@ class Input extends Component {
                     <span>Description:</span>
                     <input className="ma2" type="text" onChange={(e) => {
                         this.updateValue('description', e.target.value)
-                    }} />
-                </div>
-                <div>
-                    <span>Created:</span>
-                    <input className="ma2" type="text" onChange={(e) => {
-                        this.updateValue('created', e.target.value)
                     }} />
                 </div>
                 <button className="btn btn-primary ma3" onClick={() => {

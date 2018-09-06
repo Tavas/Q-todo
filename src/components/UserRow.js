@@ -9,7 +9,7 @@ class UserRow extends React.Component {
                 <td>{this.props.user.jobtitle}</td>
                 <td>{this.props.user.description}</td>
                 <td>{this.props.user.created}</td>
-         </tr>
+        </tr>
     );
   }
 }

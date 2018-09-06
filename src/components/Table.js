@@ -2,31 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UserRow from './UserRow';
 import Buttons from './Buttons';
-import { users } from '../users';
+
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyCjwWnFlau-4tnJ8wYwk68l44UNdf5X4P4",
+            authDomain: "q-todo-4ead6.firebaseapp.com",
+            databaseURL: "https://q-todo-4ead6.firebaseio.com",
+            projectId: "q-todo-4ead6",
+            storageBucket: "q-todo-4ead6.appspot.com",
+            messagingSenderId: "435338733424"
+          };
+          firebase.initializeApp(config);
 
 const $ = require('jquery');
-$.DataTable = require('datatables.net');
 
-const columns = [
-    {
-        title: 'ID',
-        data: 'id'
-    },
-    {
-        title: 'Job Title',
-        data: 'jobtitle'
-    },
-    {
-        title: 'Description',
-        data: 'description'
-    },
-    {
-        title: 'Created',
-        data: 'created'
-    },
-];
-
-function reloadTableData(users) {
+ function reloadTableData(users) {
     const table = $('.data-table-wrapper').find('table').DataTable();
     table.clear();
     table.rows.add(users);
@@ -35,33 +29,18 @@ function reloadTableData(users) {
 
 function updateTable(users) {
     const table = $('.data-table-wrapper').find('table').DataTable();
-    let dataChanged = false;
-    table.rows().every(function () {
-        const oldUserData = this.data();
-        const newUserData = users.find((userData) => {
-            return userData.user === oldUserData.user;
-        });
-        if (oldUserData.jobtitle !== newUserData.jobtitle) {
-            dataChanged = true;
-            this.data(newUserData);
-        }
-       return true;
-    });
-
-    if (dataChanged) {
-        table.draw();
-    }
+    table.clear();
+    table.rows.add(users);
+    table.draw();
 }
 
 class Table extends Component { 
-    componentDidMount() {
-        $(this.refs.main).DataTable({
-           dom: '<"data-table-wrapper"t>',
-           data: this.props.users,
-           columns,
-           ordering: false
-        });
-    }  
+  constructor(props) {
+    super(props);
+      this.state = {
+        users: props.users
+     };
+  } 
 
     componentWillUnmount(){
        $('.data-table-wrapper')
@@ -76,7 +55,7 @@ class Table extends Component {
         } else {
             updateTable(nextProps.users);
         }
-        return false;
+        return true;
     }
 
      render() {
@@ -87,16 +66,17 @@ class Table extends Component {
                   <tr>
                       <th>ID</th>
                       <th>Job Title</th>
-                      <th>Job Description</th>
-                      <th>Record Created</th>
+                      <th>Description</th>
+                      <th>Date Created</th>
                   </tr>
               </thead>
-              <tbody>
-                {
-                  users.map(row => (
+                 {
+                  this.props.users.map(row => (
                    <UserRow user={row} />
                   ))
                 }
+              <tbody>
+
               </tbody>
               </table>
                <div className="row">
